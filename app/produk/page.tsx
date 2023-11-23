@@ -36,12 +36,13 @@ import Link from 'next/link'
   const CategoriList = async () => {
     const category: Category[] = await getCategory()
     const produk: Produk[] = await getProduk()
+    console.log(produk);
     return (
       <div>
         {/* Categori List */}
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {produk.map((produk,index) => (
-                <div className="card bg-white p-5 m-3 rounded-md">
+                <div className="card bg-blue-50 p-5 m-3 rounded-md">
                     <Image src="/makanan.jpg" width={100} height={100} alt='Gambar' className="w-screen h-[100px] mb-1" />
                     <h3 className='text-[1.5rem] font-semibold max-w-fit'>
                         <Link href={`/produk/${produk.id}`} key={produk.id}>

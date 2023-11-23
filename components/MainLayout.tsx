@@ -39,6 +39,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               <Link href="/category" className='flex-1'>Category</Link>
               <FiChevronRight />
             </li>
+            <li className='flex justify-start items-center hover:bg-yellow-200 hover:text-sky-800 rounded-xl p-2 cursor-pointer'>
+              <BiCategoryAlt className="mr-2" />
+              <Link href="/jenis" className='flex-1'>Jenis</Link>
+              {/* <FiChevronRight /> */}
+            </li>
             <li className='flex justify-start items-center hover:bg-cyan-200 hover:text-cyan-800 rounded-xl p-2 cursor-pointer'>
               <SlBasket className="mr-2" />
               <Link href="/produk" className='flex-1'>Product</Link>
@@ -46,7 +51,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             </li>
           </ul>
         </aside>
-        <main className='flex-1'>{children}</main>
+        <main className='flex-1 bg-white rounded-lg mt-3 shadow-lg p-5 mr-5'>{children}</main>
       </div>
     </div>
   )

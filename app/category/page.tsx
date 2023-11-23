@@ -3,6 +3,9 @@ export const metadata = {
 }
 import axios from 'axios'
 import Link from 'next/link'
+import AddCategory from './addCategory';
+import DeleteCategory from './deleteCategory';
+import UpdateCategory from './updateCategory';
 
 type Category = {
   id: number;
@@ -17,14 +20,34 @@ const getCategory = async () => {
 const CategoriList = async () => {
   const category: Category[] = await getCategory()
   return (
-    <div>
-      Categori List
+    <div className=''>
+      <h1 className='text-xl'>Category</h1>
+      <hr className='my-5' />
+      <div className="py-2">
+        <AddCategory />
+      </div>
+      <table className='table w-full'>
+        <thead className="bg-slate-200">
+          <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {category.map((category,index) => (
+            <tr key={category.id}>
+              <td>{index + 1}</td>
+              <td>{category.nama}</td>
+              <td className="flex gap-2">
+                <UpdateCategory {...category} />
+                <DeleteCategory {...category} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <ul>
-        {category.map((category,index) => (
-          <Link href={`/category/${category.id}`} key={category.id}>
-            <li>{category.nama}</li>
-          </Link>
-        ))}
       </ul>
     </div>
   )
